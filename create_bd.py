@@ -78,7 +78,6 @@ def load_table(conn: sqlite3.Connection, table: str, csv_file: str, mapping: dic
     print(f"Загрузка {table} из {csv_file}")
     path = os.path.join(CSV_DIR, csv_file)
     df = pd.read_csv(path, sep=";", encoding="utf-8")
-    df.columns = df.columns.str.strip()
     df = df.dropna(how="all")
     df = df[~df.apply(lambda x: x.astype(str).str.strip().eq("").all(), axis=1)]
     df = df.rename(columns=mapping)
@@ -295,10 +294,10 @@ def load_data(conn: sqlite3.Connection, table_name: str, csv_file: str, column_m
     try:
         df = pd.read_csv(os.path.join(CSV_DIR, csv_file), sep=";", encoding="utf-8")
         
-        df.columns = df.columns.str.strip()
-    
+        # Удаляем пустые строки
         df = df.dropna(how="all")
-
+        
+        # Фильтруем строки, где все значения пустые или только пробелы
         df = df[~df.apply(lambda x: x.astype(str).str.strip().eq("").all(), axis=1)]
         
         if len(df) == 0:
@@ -310,16 +309,11 @@ def load_data(conn: sqlite3.Connection, table_name: str, csv_file: str, column_m
         if preprocess:
             df = preprocess(df)
         
+        # Удаляем строки с пустыми значениями после предобработки
         df = df.dropna(how="all")
 
-        conn.execute("PRAGMA foreign_keys = OFF;")
-        try:
-            conn.execute(f"DELETE FROM {table_name};")
-        except sqlite3.IntegrityError:
-            pass
-        finally:
-            conn.execute("PRAGMA foreign_keys = ON;")
-        
+        # очищаем таблицу, чтобы append не нарушил уникальные ограничения
+        conn.execute(f"DELETE FROM {table_name};")
         df.to_sql(table_name, conn, if_exists="append", index=False)
         print(f"Успешно загружено {len(df)} записей в {table_name}.")
 

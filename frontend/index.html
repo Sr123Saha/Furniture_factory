@@ -8,21 +8,36 @@
 <body>
 <div class="app">
     <header class="header">
-        <div class="logo">🪑 МебельПРО</div>
+        <div class="logo">МебельПРО</div>
         <div class="title">Подсистема работы с продукцией</div>
     </header>
 
     <div class="layout">
         <nav class="sidebar">
-            <button id="nav-products" class="nav-btn active">Продукция</button>
-            <button id="nav-workshops" class="nav-btn">Цеха и сырьё</button>
+            <button id="nav-products" class="nav-btn active">📦 Продукция</button>
+            <button id="nav-product-types" class="nav-btn">🏷️ Типы продукции</button>
+            <button id="nav-materials" class="nav-btn">🔩 Материалы</button>
+            <button id="nav-workshops" class="nav-btn">🏭 Цеха</button>
+            <button id="nav-product-workshops" class="nav-btn">⚙️ Продукция-Цеха</button>
+            <button id="nav-calc" class="nav-btn">🧮 Расчёт сырья</button>
         </nav>
 
         <main class="content">
+            <div class="hero">
+                <div>
+                    <p class="hero-kicker">Система контроля производства</p>
+                    <h1 class="hero-title">Чёткий учёт, быстрые расчёты</h1>
+                    <p class="hero-sub">Время изготовления, цеха, сырьё — всё в одном окне.</p>
+                </div>
+                <div class="hero-media">
+                    <img src="https://media.giphy.com/media/3o7TKtnuHOHHUjR38Y/giphy.gif" alt="Production animation">
+                </div>
+            </div>
+
             <!-- Продукция -->
             <section id="page-products" class="page visible">
                 <div class="section-header">
-                    <h1>Список продукции</h1>
+                    <h2>📦 Список продукции</h2>
                     <button id="btn-add" class="primary">＋ Добавить продукт</button>
                 </div>
 
@@ -45,33 +60,74 @@
                 </table>
             </section>
 
-            <!-- Цеха и сырьё -->
-            <section id="page-workshops" class="page">
-                <h1>Цеха для продукции</h1>
-                <div id="workshops-message" class="message hidden"></div>
-
-                <label>Выберите продукт:
-                    <select id="workshops_product_select">
-                        <option value="">-- Загрузка... --</option>
-                    </select>
-                </label>
-                <button id="btn-load-workshops" class="primary">Загрузить цеха</button>
-
-                <table id="workshops-table">
+            <!-- Типы продукции -->
+            <section id="page-product-types" class="page">
+                <h2>🏷️ Типы продукции</h2>
+                <table id="product-types-table">
                     <thead>
                     <tr>
-                        <th>Цех</th>
-                        <th>Тип</th>
-                        <th>Сотрудников</th>
-                        <th>Время</th>
+                        <th>Тип продукции</th>
+                        <th>Коэффициент</th>
                     </tr>
                     </thead>
                     <tbody></tbody>
                 </table>
+            </section>
 
-                <div id="production-time" class="info"></div>
+            <!-- Материалы -->
+            <section id="page-materials" class="page">
+                <h2>🔩 Материалы</h2>
+                <table id="materials-table">
+                    <thead>
+                    <tr>
+                        <th>Тип материала</th>
+                        <th>Процент потерь</th>
+                    </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </section>
 
-                <h2>Расчёт сырья</h2>
+            <!-- Цеха -->
+            <section id="page-workshops" class="page">
+                <h2>🏭 Цеха</h2>
+                <table id="workshops-table">
+                    <thead>
+                    <tr>
+                        <th>Название цеха</th>
+                        <th>Тип цеха</th>
+                        <th>Количество сотрудников</th>
+                    </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </section>
+
+            <!-- Продукция-Цеха -->
+            <section id="page-product-workshops" class="page">
+                <h2>⚙️ Продукция-Цеха</h2>
+                <label>Выберите продукт:
+                    <select id="product-workshops-select">
+                        <option value="">-- Загрузка... --</option>
+                    </select>
+                </label>
+                <button id="btn-load-product-workshops" class="primary">Загрузить данные</button>
+                <table id="product-workshops-table">
+                    <thead>
+                    <tr>
+                        <th>Продукция</th>
+                        <th>Цех</th>
+                        <th>Время изготовления (ч)</th>
+                    </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+                <div id="product-workshops-time" class="info"></div>
+            </section>
+
+            <!-- Расчёт сырья -->
+            <section id="page-calc" class="page">
+                <h2>🧮 Расчёт сырья</h2>
                 <form id="raw-form" class="grid-form">
                     <label>Тип продукции:
                         <select id="raw_product_type_name" required>

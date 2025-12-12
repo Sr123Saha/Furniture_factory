@@ -176,6 +176,39 @@ def get_materials(db: Session = Depends(get_db)):
     return [schemas.MaterialOut(material_name=m.material_name) for m in materials]
 
 
+@app.get("/all-product-types", response_model=List[schemas.ProductTypeFullOut])
+def get_all_product_types(db: Session = Depends(get_db)):
+    types = db.query(models.ProductType).all()
+    return [schemas.ProductTypeFullOut(product_type_name=t.product_type_name, type_coefficient=t.type_coefficient) for t in types]
+
+
+@app.get("/all-materials", response_model=List[schemas.MaterialFullOut])
+def get_all_materials(db: Session = Depends(get_db)):
+    materials = db.query(models.Material).all()
+    return [schemas.MaterialFullOut(material_name=m.material_name, loss_percentage=m.loss_percentage) for m in materials]
+
+
+@app.get("/all-workshops", response_model=List[schemas.WorkshopFullOut])
+def get_all_workshops(db: Session = Depends(get_db)):
+    workshops = db.query(models.Workshop).all()
+    return [schemas.WorkshopFullOut(workshop_name=w.workshop_name, workshop_type=w.workshop_type, num_employees=w.num_employees) for w in workshops]
+
+
+@app.get("/all-product-workshops", response_model=List[schemas.ProductWorkshopOut])
+def get_all_product_workshops(db: Session = Depends(get_db)):
+    pw_list = db.query(models.ProductWorkshop).all()
+    return [schemas.ProductWorkshopOut(product_name=pw.product_name, workshop_name=pw.workshop_name, coefficient=pw.coefficient) for pw in pw_list]
+
+
+@app.get("/product-workshops/{product_id}", response_model=List[schemas.ProductWorkshopOut])
+def get_product_workshops_by_id(product_id: int, db: Session = Depends(get_db)):
+    product = db.query(models.Product).filter(models.Product.product_id == product_id).first()
+    if not product:
+        raise HTTPException(status_code=404, detail="Product not found")
+    pw_list = db.query(models.ProductWorkshop).filter(models.ProductWorkshop.product_name == product.product_name).all()
+    return [schemas.ProductWorkshopOut(product_name=pw.product_name, workshop_name=pw.workshop_name, coefficient=pw.coefficient) for pw in pw_list]
+
+
 # ---------- Raw material calculation ----------
 
 @app.post("/calculate_raw_material", response_model=schemas.RawMaterialResponse)

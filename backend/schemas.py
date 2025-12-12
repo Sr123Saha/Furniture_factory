@@ -2,7 +2,6 @@ from typing import Optional, List
 from pydantic import BaseModel, conint, PositiveFloat
 
 
-# ---------- Products ----------
 
 class ProductBase(BaseModel):
     product_name: str
@@ -28,7 +27,6 @@ class ProductOut(ProductBase):
         from_attributes = True
 
 
-# ---------- Workshops ----------
 
 class WorkshopOut(BaseModel):
     workshop_name: str
@@ -40,7 +38,6 @@ class WorkshopOut(BaseModel):
         from_attributes = True
 
 
-# ---------- Raw material calculation ----------
 
 class RawMaterialRequest(BaseModel):
     product_type_name: str
@@ -54,7 +51,6 @@ class RawMaterialResponse(BaseModel):
     required_raw_material: int
 
 
-# ---------- Dictionaries ----------
 
 class ProductTypeOut(BaseModel):
     product_type_name: str
@@ -65,6 +61,40 @@ class ProductTypeOut(BaseModel):
 
 class MaterialOut(BaseModel):
     material_name: str
+
+    class Config:
+        from_attributes = True
+
+
+class ProductTypeFullOut(BaseModel):
+    product_type_name: str
+    type_coefficient: float
+
+    class Config:
+        from_attributes = True
+
+
+class MaterialFullOut(BaseModel):
+    material_name: str
+    loss_percentage: float
+
+    class Config:
+        from_attributes = True
+
+
+class WorkshopFullOut(BaseModel):
+    workshop_name: str
+    workshop_type: str
+    num_employees: int
+
+    class Config:
+        from_attributes = True
+
+
+class ProductWorkshopOut(BaseModel):
+    product_name: str
+    workshop_name: str
+    coefficient: float
 
     class Config:
         from_attributes = True
