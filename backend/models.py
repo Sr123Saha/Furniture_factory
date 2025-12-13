@@ -51,7 +51,7 @@ class ProductWorkshop(Base):
 
     product_name = Column(String, ForeignKey("Products.product_name"), primary_key=True)
     workshop_name = Column(String, ForeignKey("Workshops.workshop_name"), primary_key=True)
-    coefficient = Column(Float, nullable=False)  # время в цехе
+    coefficient = Column(Float, nullable=False)
 
     product = relationship("Product", back_populates="workshops")
     workshop = relationship("Workshop", back_populates="product_workshops")

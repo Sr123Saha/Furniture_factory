@@ -1,6 +1,5 @@
 const API_BASE = "";
 
-// DOM элементы
 const productsTableBody = document.querySelector("#products-table tbody");
 const messageBox = document.getElementById("message");
 const btnAdd = document.getElementById("btn-add");
@@ -9,7 +8,6 @@ const formTitle = document.getElementById("form-title");
 const productForm = document.getElementById("product-form");
 const btnCancel = document.getElementById("btn-cancel");
 
-// Навигация
 const navButtons = {
     products: document.getElementById("nav-products"),
     productTypes: document.getElementById("nav-product-types"),
@@ -28,7 +26,6 @@ const pages = {
     calc: document.getElementById("page-calc")
 };
 
-// Таблицы
 const productTypesTableBody = document.querySelector("#product-types-table tbody");
 const materialsTableBody = document.querySelector("#materials-table tbody");
 const workshopsTableBody = document.querySelector("#workshops-table tbody");
@@ -40,7 +37,6 @@ const productWorkshopsTime = document.getElementById("product-workshops-time");
 const rawForm = document.getElementById("raw-form");
 const rawResult = document.getElementById("raw-result");
 
-// Навигация
 function showPage(pageName) {
     Object.values(pages).forEach(page => page.classList.remove("visible"));
     Object.values(navButtons).forEach(btn => btn.classList.remove("active"));
@@ -68,7 +64,6 @@ navButtons.productWorkshops.addEventListener("click", () => {
 });
 navButtons.calc.addEventListener("click", () => showPage("calc"));
 
-// Helpers
 function showMessage(element, text, type = "info") {
     element.textContent = text;
     element.classList.remove("hidden", "error", "info");
@@ -79,7 +74,6 @@ function hideMessage(element) {
     element.classList.add("hidden");
 }
 
-// Загрузка типов продукции
 async function loadProductTypes() {
     productTypesTableBody.innerHTML = "";
     try {
@@ -103,7 +97,6 @@ async function loadProductTypes() {
     }
 }
 
-// Загрузка материалов
 async function loadMaterials() {
     materialsTableBody.innerHTML = "";
     try {
@@ -127,7 +120,6 @@ async function loadMaterials() {
     }
 }
 
-// Загрузка цехов
 async function loadWorkshops() {
     workshopsTableBody.innerHTML = "";
     try {
@@ -152,7 +144,6 @@ async function loadWorkshops() {
     }
 }
 
-// Загрузка продукции для выпадающего списка
 async function loadProductsForSelect(selectElement) {
     selectElement.innerHTML = '<option value="">-- Выберите продукт --</option>';
     try {
@@ -170,7 +161,6 @@ async function loadProductsForSelect(selectElement) {
     }
 }
 
-// Загрузка продукции-цехов
 btnLoadProductWorkshops.addEventListener("click", async () => {
     productWorkshopsTableBody.innerHTML = "";
     productWorkshopsTime.textContent = "";
@@ -201,7 +191,6 @@ btnLoadProductWorkshops.addEventListener("click", async () => {
             productWorkshopsTableBody.appendChild(tr);
         });
         
-        // Загружаем общее время
         const timeRes = await fetch(`${API_BASE}/products/${productId}/production_time`);
         if (timeRes.ok) {
             const timeData = await timeRes.json();
@@ -214,7 +203,6 @@ btnLoadProductWorkshops.addEventListener("click", async () => {
     }
 });
 
-// Загрузка типов и материалов для формы расчёта
 async function loadProductTypesForSelect(selectId) {
     const select = document.getElementById(selectId);
     select.innerHTML = '<option value="">-- Выберите --</option>';
@@ -243,7 +231,6 @@ async function loadMaterialsForSelect(selectId) {
     });
 }
 
-// Products
 async function loadProducts() {
     productsTableBody.innerHTML = "";
     hideMessage(messageBox);
@@ -387,7 +374,6 @@ async function deleteProduct(id) {
     }
 }
 
-// Расчёт сырья
 rawForm.addEventListener("submit", async (e) => {
     e.preventDefault();
     rawResult.textContent = "";
@@ -430,7 +416,6 @@ rawForm.addEventListener("submit", async (e) => {
     }
 });
 
-// Инициализация
 loadProducts();
 loadProductTypesForSelect("raw_product_type_name");
 loadMaterialsForSelect("raw_material_name");

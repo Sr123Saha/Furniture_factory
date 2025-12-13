@@ -8,36 +8,45 @@
 <body>
 <div class="app">
     <header class="header">
-        <div class="logo">МебельПРО</div>
+        <div class="logo">
+            <div class="logo">МебельПРО</div>
+            <!-- <img src="logo.png"alt="МебельПРО"> -->
+            </div>
         <div class="title">Подсистема работы с продукцией</div>
     </header>
 
     <div class="layout">
         <nav class="sidebar">
-            <button id="nav-products" class="nav-btn active">📦 Продукция</button>
-            <button id="nav-product-types" class="nav-btn">🏷️ Типы продукции</button>
-            <button id="nav-materials" class="nav-btn">🔩 Материалы</button>
-            <button id="nav-workshops" class="nav-btn">🏭 Цеха</button>
-            <button id="nav-product-workshops" class="nav-btn">⚙️ Продукция-Цеха</button>
-            <button id="nav-calc" class="nav-btn">🧮 Расчёт сырья</button>
+            <button id="nav-products" class="nav-btn active"> Продукция</button>
+            <button id="nav-product-types" class="nav-btn"> Типы продукции</button>
+            <button id="nav-materials" class="nav-btn"> Материалы</button>
+            <button id="nav-workshops" class="nav-btn"> Цеха</button>
+            <button id="nav-product-workshops" class="nav-btn"> Продукция-Цеха</button>
+            <button id="nav-calc" class="nav-btn"> Расчёт сырья</button>
         </nav>
 
         <main class="content">
             <div class="hero">
                 <div>
                     <p class="hero-kicker">Система контроля производства</p>
-                    <h1 class="hero-title">Чёткий учёт, быстрые расчёты</h1>
-                    <p class="hero-sub">Время изготовления, цеха, сырьё — всё в одном окне.</p>
                 </div>
-                <div class="hero-media">
-                    <img src="https://media.giphy.com/media/3o7TKtnuHOHHUjR38Y/giphy.gif" alt="Production animation">
-                </div>
+
+                
+                <div style="border-radius: 20px; overflow: hidden; display: inline-block; max-width: 300px;">
+                    <div class="tenor-gif-embed" 
+                        data-postid="26964777" 
+                        data-share-method="host" 
+                        data-aspect-ratio="1" 
+                        data-width="100%">
+    </div>
+    <script async src="https://tenor.com/embed.js"></script>
+</div>
+            
             </div>
 
-            <!-- Продукция -->
             <section id="page-products" class="page visible">
                 <div class="section-header">
-                    <h2>📦 Список продукции</h2>
+                    <h2> Список продукции</h2>
                     <button id="btn-add" class="primary">＋ Добавить продукт</button>
                 </div>
 
@@ -60,9 +69,8 @@
                 </table>
             </section>
 
-            <!-- Типы продукции -->
             <section id="page-product-types" class="page">
-                <h2>🏷️ Типы продукции</h2>
+                <h2> Типы продукции</h2>
                 <table id="product-types-table">
                     <thead>
                     <tr>
@@ -74,9 +82,8 @@
                 </table>
             </section>
 
-            <!-- Материалы -->
             <section id="page-materials" class="page">
-                <h2>🔩 Материалы</h2>
+                <h2> Материалы</h2>
                 <table id="materials-table">
                     <thead>
                     <tr>
@@ -88,9 +95,8 @@
                 </table>
             </section>
 
-            <!-- Цеха -->
             <section id="page-workshops" class="page">
-                <h2>🏭 Цеха</h2>
+                <h2> Цеха</h2>
                 <table id="workshops-table">
                     <thead>
                     <tr>
@@ -103,9 +109,8 @@
                 </table>
             </section>
 
-            <!-- Продукция-Цеха -->
             <section id="page-product-workshops" class="page">
-                <h2>⚙️ Продукция-Цеха</h2>
+                <h2> Продукция-Цеха</h2>
                 <label>Выберите продукт:
                     <select id="product-workshops-select">
                         <option value="">-- Загрузка... --</option>
@@ -125,9 +130,8 @@
                 <div id="product-workshops-time" class="info"></div>
             </section>
 
-            <!-- Расчёт сырья -->
             <section id="page-calc" class="page">
-                <h2>🧮 Расчёт сырья</h2>
+                <h2> Расчёт сырья</h2>
                 <form id="raw-form" class="grid-form">
                     <label>Тип продукции:
                         <select id="raw_product_type_name" required>
@@ -158,7 +162,6 @@
     <footer class="footer">© 2006–2025 МебельПРО</footer>
 </div>
 
-<!-- Модалка продукта -->
 <div id="product-form-modal" class="modal hidden">
     <div class="modal-content">
         <h2 id="form-title">Добавить продукт</h2>

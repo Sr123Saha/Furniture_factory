@@ -31,7 +31,6 @@ def serve_index():
     return FileResponse(os.path.join(FRONTEND_DIR, "index.html"))
 
 
-# ---------- Products ----------
 
 @app.get("/products", response_model=List[schemas.ProductOut])
 def get_products(db: Session = Depends(get_db)):
@@ -56,7 +55,6 @@ def get_products(db: Session = Depends(get_db)):
 
 @app.post("/products", response_model=schemas.ProductOut)
 def create_product(product_in: schemas.ProductCreate, db: Session = Depends(get_db)):
-    # проверка уникальности артикула
     exists = db.query(models.Product).filter(models.Product.article == product_in.article).first()
     if exists:
         raise HTTPException(status_code=400, detail="Артикул уже существует")
@@ -132,7 +130,6 @@ def delete_product(product_id: int, db: Session = Depends(get_db)):
     return {"detail": "Product deleted"}
 
 
-# ---------- Workshops ----------
 
 @app.get("/products/{product_id}/workshops", response_model=List[schemas.WorkshopOut])
 def get_product_workshops(product_id: int, db: Session = Depends(get_db)):
@@ -161,8 +158,6 @@ def get_production_time(product_id: int, db: Session = Depends(get_db)):
     total = int(round(max(sum(pw.coefficient for pw in product.workshops), 0)))
     return {"product_id": product_id, "total_production_time": total}
 
-
-# ---------- Dictionaries ----------
 
 @app.get("/product-types", response_model=List[schemas.ProductTypeOut])
 def get_product_types(db: Session = Depends(get_db)):
@@ -208,8 +203,6 @@ def get_product_workshops_by_id(product_id: int, db: Session = Depends(get_db)):
     pw_list = db.query(models.ProductWorkshop).filter(models.ProductWorkshop.product_name == product.product_name).all()
     return [schemas.ProductWorkshopOut(product_name=pw.product_name, workshop_name=pw.workshop_name, coefficient=pw.coefficient) for pw in pw_list]
 
-
-# ---------- Raw material calculation ----------
 
 @app.post("/calculate_raw_material", response_model=schemas.RawMaterialResponse)
 def calculate_raw_material(req: schemas.RawMaterialRequest, db: Session = Depends(get_db)):
