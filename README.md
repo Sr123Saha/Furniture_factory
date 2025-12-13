@@ -149,10 +149,10 @@ Furniture_factory/
  -  <a href="https://education.yandex.ru/handbook/" target="_blank">Яндекс Образование</a>
  -  <a href="https://github.com/markdown-templates/markdown-emojis" target="_blank">markdown-emojis</a>
  -  <a href="https://www.sqlite.org/docs.html" target="_blank">SQLite</a>
-  -  <a href="https://gist.github.com/dmitry-osin/4d50ec8316fb33552e9283f78a7162bb" target="_blank">HTML</a>
-   -  <a href="https://fastapi.tiangolo.com/#alternative-api-docs-upgrade" target="_blank">Fastapi</a>
-    -  <a href="https://habr.com/ru/articles/848592/" target="_blank">SQLAlchemy</a>
-     -  <a href="https://gist.github.com/dmitry-osin/c64f7d8eb9ed60cc932c4c56ac7eae22" target="_blank">Сss</a>
+ -  <a href="https://gist.github.com/dmitry-osin/4d50ec8316fb33552e9283f78a7162bb" target="_blank">HTML</a>
+ -  <a href="https://fastapi.tiangolo.com/#alternative-api-docs-upgrade" target="_blank">Fastapi</a>
+ -  <a href="https://habr.com/ru/articles/848592/" target="_blank">SQLAlchemy</a>
+ -  <a href="https://gist.github.com/dmitry-osin/c64f7d8eb9ed60cc932c4c56ac7eae22" target="_blank">Сss</a>
   - <a href="https://chatgpt.com/" target="_blank">ChatGPT</a>
   - <a href="https://chat.deepseek.com/" target="_blank">deepseek</a>
   - <a href="https://gemini.google.com/" target="_blank">gemini</a>
