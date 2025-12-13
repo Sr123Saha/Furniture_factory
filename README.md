@@ -154,7 +154,7 @@ Furniture_factory/
      -  <a href="https://gist.github.com/dmitry-osin/c64f7d8eb9ed60cc932c4c56ac7eae22" target="_blank">Сss</a>
   - <a href="https://chatgpt.com/" target="_blank">ChatGPT</a>
   - <a href="https://chat.deepseek.com/" target="_blank">deepseek</a>
-    - <a href="https://gemini.google.com/" target="_blank">gemini</a>
+  - <a href="https://gemini.google.com/" target="_blank">gemini</a>
 
 
 ## 🐛Итог
@@ -165,4 +165,3 @@ Furniture_factory/
 * до реализации backend API
 * и создания простого, функционального UI.
 
-Подходит для защиты курсовой / практической работы и дальнейшего расширения функционала.
