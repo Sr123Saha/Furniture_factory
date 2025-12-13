@@ -22,6 +22,7 @@
 
 ## 🐾Быстрый старт
 
+   - <a href="https://github.com/Sr123Saha/Furniture_factory/blob/main/report/PR_MEB.mp4" target="_blank">Как работает и как быстро запустить(Видео)</a>
 ```bash
 pip install -r requirements.txt
 python create_bd.py
