@@ -367,6 +367,30 @@ select { cursor: pointer; }
     margin-top: 12px;
 }
 
+.message {
+    margin: 15px 0;
+    padding: 12px 18px;
+    border-radius: 10px;
+    font-weight: 500;
+}
+
+.message.info {
+    background: #e6fffa;
+    color: #065f46;
+    border: 1px solid #34d399;
+}
+
+.message.error {
+    background: #fee2e2;
+    color: #7f1d1d;
+    border: 1px solid #f87171;
+}
+
+.message.hidden {
+    display: none;
+}
+
+
 .grid-form label { margin-top: 0; }
 .grid-form button { grid-column: 1 / -1; justify-self: start; }
 

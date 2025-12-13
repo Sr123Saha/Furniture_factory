@@ -64,11 +64,18 @@ navButtons.productWorkshops.addEventListener("click", () => {
 });
 navButtons.calc.addEventListener("click", () => showPage("calc"));
 
-function showMessage(element, text, type = "info") {
+function showMessage(element, text, type = "info", timeout = 3000) {
     element.textContent = text;
     element.classList.remove("hidden", "error", "info");
     element.classList.add(type);
+
+    if (timeout) {
+        setTimeout(() => {
+            element.classList.add("hidden");
+        }, timeout);
+    }
 }
+
 
 function hideMessage(element) {
     element.classList.add("hidden");
